@@ -3,18 +3,15 @@ import pandas as pd
 import numpy as np
 import pickle
 from datetime import datetime, timedelta
-
-# Assuming ts is your time series data
-model_ARIMA = ARIMA(ts, order=(1, 1, 1))
-result_ARIMA = model_ARIMA.fit()
-
-# Save the model
-with open('model/arima_model.pkl', 'wb') as file:
-    pickle.dump(result_ARIMA, file)
+from statsmodels.tsa.arima.model import ARIMA
 
 # Load the trained ARIMA model
 with open('model/arima_model.pkl', 'rb') as file:
     model_ARIMA = pickle.load(file)
+
+# Save the model
+with open('model/arima_model.pkl', 'wb') as file:
+    pickle.dump(result_ARIMA, file)
 
 @app.route('/')
 def index():
@@ -41,4 +38,3 @@ def predict():
         return jsonify(results)
     except Exception as e:
         return jsonify({'error': str(e)})
-
