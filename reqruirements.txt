@@ -1,0 +1,9 @@
+Flask
+numpy==1.22.3
+pandas==2.0.1
+matplotlib
+seaborn
+statsmodels
+scikit-learn
+pip==24.1.2
+pickle
