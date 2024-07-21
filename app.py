@@ -1,9 +1,8 @@
-from flask import Flask, request, render_template, jsonify
+import streamlit as st
 import pandas as pd
 import numpy as np
 import pickle
 from datetime import datetime, timedelta
-from statsmodels.tsa.arima.model import ARIMA
 
 # Assuming ts is your time series data
 model_ARIMA = ARIMA(ts, order=(1, 1, 1))
@@ -43,5 +42,3 @@ def predict():
     except Exception as e:
         return jsonify({'error': str(e)})
 
-if __name__ == '__main__':
-    app.run(debug=True)
